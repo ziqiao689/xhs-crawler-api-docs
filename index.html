@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>小红书舆情监控爬虫 - API文档</title>
+    <link rel="stylesheet" type="text/css" href="https://unpkg.com/swagger-ui-dist@5.11.0/swagger-ui.css">
+    <style>
+        html { box-sizing: border-box; overflow-y: scroll; }
+        *, *:before, *:after { box-sizing: inherit; }
+        body { margin: 0; background: #fafafa; }
+        .swagger-ui .topbar { display: none; }
+        .swagger-ui .info { margin: 30px 0; }
+        .swagger-ui .info .title { font-size: 28px; }
+        /* 自定义页面头部 */
+        .custom-header {
+            background: linear-gradient(135deg, #ff2442 0%, #ff6b81 100%);
+            color: white;
+            padding: 20px 40px;
+            text-align: center;
+        }
+        .custom-header h1 {
+            margin: 0;
+            font-size: 24px;
+            font-weight: 600;
+        }
+        .custom-header p {
+            margin: 8px 0 0;
+            font-size: 14px;
+            opacity: 0.9;
+        }
+    </style>
+</head>
+<body>
+    <div class="custom-header">
+        <h1>小红书舆情监控爬虫 API 文档</h1>
+        <p>完整的接口说明 · 参数详解 · 使用示例</p>
+    </div>
+    <div id="swagger-ui"></div>
+
+    <script src="https://unpkg.com/swagger-ui-dist@5.11.0/swagger-ui-bundle.js"></script>
+    <script src="https://unpkg.com/swagger-ui-dist@5.11.0/swagger-ui-standalone-preset.js"></script>
+    <script>
+        window.onload = function() {
+            const ui = SwaggerUIBundle({
+                url: "openapi.json",
+                dom_id: '#swagger-ui',
+                deepLinking: true,
+                presets: [
+                    SwaggerUIBundle.presets.apis,
+                    SwaggerUIStandalonePreset
+                ],
+                plugins: [
+                    SwaggerUIBundle.plugins.DownloadUrl
+                ],
+                layout: "StandaloneLayout",
+                defaultModelsExpandDepth: 1,
+                defaultModelExpandDepth: 2,
+                docExpansion: "list",
+                filter: true,
+                showExtensions: true,
+                showCommonExtensions: true,
+                tryItOutEnabled: false
+            });
+            window.ui = ui;
+        };
+    </script>
+
+    <!-- 中文翻译脚本 -->
+    <script>
+    (function() {
+        function translateSwaggerUI() {
+            var translations = {
+                // 按钮
+                'Authorize': '授权认证',
+                'Try it out': '试一试',
+                'Execute': '执行',
+                'Clear': '清除',
+                'Cancel': '取消',
+                'Close': '关闭',
+                'Reset': '重置',
+                'Download': '下载',
+                'Copy': '复制',
+                'Expand all': '展开全部',
+                'Collapse all': '折叠全部',
+                'Logout': '退出登录',
+
+                // 标签
+                'Parameters': '请求参数',
+                'No parameters': '无参数',
+                'Request body': '请求体',
+                'required': '必填',
+                'Example Value': '示例值',
+                'Schema': '数据结构',
+                'Model': '模型',
+                'Example': '示例',
+                'Responses': '响应结果',
+                'Response body': '响应体',
+                'Response headers': '响应头',
+                'Headers': '请求头',
+                'Description': '描述',
+                'Name': '名称',
+                'Value': '值',
+                'Type': '类型',
+                'Default': '默认值',
+                'Available values': '可选值',
+                'Parameter content type': '参数内容类型',
+                'Response content type': '响应内容类型',
+
+                // 状态
+                'Loading...': '加载中...',
+                'No response': '无响应',
+                'Server response': '服务器响应',
+                'Curl': 'Curl命令',
+                'Request URL': '请求地址',
+                'Code': '状态码',
+                'Details': '详情',
+                'Links': '链接',
+                'Controls Accept header': '控制Accept请求头',
+
+                // 响应状态描述
+                'Successful Response': '请求成功',
+                'Validation Error': '参数验证错误',
+                'No links': '无链接',
+                'Media type': '媒体类型',
+                'Controls Accept header.': '控制Accept请求头',
+                'Explore': '浏览',
+                'Request duration': '请求耗时',
+                'Response': '响应',
+                'Undocumented': '未记录',
+                'Try': '尝试',
+                'Send empty value': '发送空值',
+                'Add string item': '添加字符串项',
+                'Add item': '添加项',
+                'File': '文件',
+                'Select a definition': '选择定义',
+
+                // 认证
+                'Available authorizations': '可用的认证方式',
+                'Authorized': '已授权',
+                'api_key': 'API密钥',
+
+                // 编辑模式
+                'Edit Value': '编辑值',
+                'Edit': '编辑',
+
+                // 其他
+                'Schemas': '数据模型',
+                'Servers': '服务器',
+                'Filter by tag': '按标签筛选',
+            };
+
+            function translateNode(node) {
+                if (node.nodeType === Node.TEXT_NODE) {
+                    var text = node.textContent.trim();
+                    if (text && translations[text]) {
+                        node.textContent = node.textContent.replace(text, translations[text]);
+                    }
+                } else if (node.nodeType === Node.ELEMENT_NODE) {
+                    if (node.placeholder && translations[node.placeholder]) {
+                        node.placeholder = translations[node.placeholder];
+                    }
+                    if (node.title && translations[node.title]) {
+                        node.title = translations[node.title];
+                    }
+                    for (var i = 0; i < node.childNodes.length; i++) {
+                        translateNode(node.childNodes[i]);
+                    }
+                }
+            }
+
+            translateNode(document.body);
+        }
+
+        setTimeout(translateSwaggerUI, 1500);
+        setTimeout(translateSwaggerUI, 3000);
+        setTimeout(translateSwaggerUI, 5000);
+
+        var observer = new MutationObserver(function(mutations) {
+            setTimeout(translateSwaggerUI, 150);
+        });
+
+        function startObserver() {
+            var target = document.getElementById('swagger-ui');
+            if (target) {
+                observer.observe(target, {
+                    childList: true,
+                    subtree: true,
+                    characterData: true
+                });
+            } else {
+                setTimeout(startObserver, 500);
+            }
+        }
+
+        startObserver();
+    })();
+    </script>
+</body>
+</html>
